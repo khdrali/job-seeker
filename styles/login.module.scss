@@ -1,0 +1,107 @@
+            .left{
+            background-image: url('../images/backgroun-login.jpg');
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            width: 50%;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 0;
+
+             .overlay{
+                position: absolute;
+                background: #5E50A1;
+                border-radius: 0px;
+                height: 100vh;
+                width: 42%;
+                opacity: 0.8;
+                z-index: 1;
+            }
+
+            h1{
+                font-family: 'Open Sans';
+                font-style: normal;
+                font-weight: 700;
+                font-size: 44px;
+                line-height: 70px;
+                color: #FFFFFF;
+                z-index: 2;
+                text-align: left;
+                padding-left: 30px;
+            }
+    
+        }
+    
+        .right{
+            
+    
+            h2{
+                font-family: 'Open Sans';
+                font-style: normal;
+                font-weight: 600;
+                font-size: 32px;
+                line-height: 44px;
+                color: #1F2A36;
+                margin-bottom: 20px;
+            }
+    
+            p{
+                font-family: 'Open Sans';
+                font-style: normal;
+                font-weight: 400;
+                font-size: 18px;
+                line-height: 25px;
+                color: #46505C;
+                margin-bottom: 20px;
+            }
+    
+            .but{
+                box-sizing: border-box;
+                width: 500px;
+                height: 50px;
+                background: #FFFFFF;
+                border: 1px solid #E2E5ED;
+                border-radius: 4px;
+                margin-bottom: 20px;
+            }
+
+            .label{
+                font-family: 'Open Sans';
+                font-style: normal;
+                font-weight: 200;
+                font-size: 16px;
+                line-height: 16px;
+                color: #9EA0A5;
+                margin-bottom: 20px;
+            }
+
+            .butLog{
+                width: 500px;
+                height: 40px;
+                background: #FBB017;
+                border-radius: 4px;
+                font-family: 'Open Sans';
+                font-style: normal;
+                font-weight: 500;
+                font-size: 16px;
+                line-height: 20px;
+                color: #FFFFFF;
+            }
+
+            .account{
+                margin-top: 20px;
+                text-align: center;
+                font-family: 'Open Sans';
+                font-style: normal;
+                font-weight: 400;
+                font-size: 16px;
+                line-height: 22px;
+                color: #1F2A36;
+        
+                span{
+                    color: #FBB017;
+                }
+            }
+        }
