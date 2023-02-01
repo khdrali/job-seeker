@@ -1,0 +1,36 @@
+.main{
+    margin-top: 50px;
+    background: #5E50A1;
+
+    img{
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+
+    p{
+        font-family: 'Open Sans';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 18px;
+        line-height: 28px;
+        color: #FFFFFF;
+    }
+
+    .lineFooter{
+        margin-top: 40px;
+        border: 1px solid #FFFFFF;
+    }
+
+    .space{
+        margin-top: 40px;
+
+        .copyRight{
+            font-family: 'Open Sans';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 18px;
+            line-height: 28px;
+            color: #FFFFFF;
+        }
+    }
+}
