@@ -1,7 +1,35 @@
 import Head from "next/head";
 import styles from "../../../styles/register.module.scss";
+import *as React from 'react'
+import axios from "axios";
 
 export default function Register() {
+  const [fullname,setFullName]=React.useState("")
+  const [email,setEmail]=React.useState("")
+  const [company,setCompany]=React.useState("")
+  const [position,setPosition]=React.useState("")
+  const [password,setPassword]=React.useState("")
+  const [phone_number, setPhone]=React.useState("")
+  const [loading,setLoading]=React.useState(false)
+  const [error,setError]=React.useState(null)
+  
+  const handleRegist=async()=>{
+    try {
+      setLoading(true)
+      const regist= await axios.post(`/api/register`,{
+        fullname,
+        email,
+        company,
+        position,
+        phone_number,
+        password,
+      })
+      console.log(regist);
+    } catch (error) {
+      setError(error)
+    }
+  }
+
   return (
     <>
       <Head>
@@ -37,7 +65,8 @@ export default function Register() {
                     type="text"
                     class={`form-control ${styles.but}`}
                     id="exampleInputName"
-                    placeholder="Masukan Nama Anda"
+                    placeholder="Input Your Name"
+                    onChange={(event)=>setFullName(event.target.value)}
                   />
                 </div>
                 <div class="mb-3">
@@ -52,7 +81,8 @@ export default function Register() {
                     class={`form-control ${styles.but}`}
                     id="exampleInputEmail1"
                     aria-describedby="emailHelp"
-                    placeholder="Masukan Email Anda"
+                    placeholder="Input Your Email"
+                    onChange={(event)=>setEmail(event.target.value)}
                   />
                   <div id="emailHelp" class="form-text"></div>
                 </div>
@@ -61,13 +91,14 @@ export default function Register() {
                     for="exampleInputPerusahaan"
                     class={`form-label ${styles.label}`}
                   >
-                    Nama Perusahaan
+                    Company
                   </label>
                   <input
                     type="text"
                     class={`form-control ${styles.but}`}
                     id="exampleInputPerusahaan"
-                    placeholder="Masukan Nama Perushaan Anda"
+                    placeholder="Input Company"
+                    onChange={(event)=>setCompany(event.target.value)}
                   />
                 </div>
                 <div class="mb-3">
@@ -75,13 +106,29 @@ export default function Register() {
                     for="exampleInputJabatan"
                     class={`form-label ${styles.label}`}
                   >
-                    Jabatan
+                    Position
                   </label>
                   <input
                     type="text"
                     class={`form-control ${styles.but}`}
                     id="exampleInputJabatan"
-                    placeholder="Masukan Jabatan Anda"
+                    placeholder="Input Your Position"
+                    onChange={(event)=>setPosition(event.target.value)}
+                  />
+                </div>
+                <div class="mb-3">
+                  <label
+                    for="exampleInputPassword1"
+                    class={`form-label ${styles.label}`}
+                  >
+                    Phone Number
+                  </label>
+                  <input
+                    type="number"
+                    class={`form-control ${styles.but}`}
+                    id="exampleInputPhone"
+                    placeholder="Input Phone Number"
+                    onChange={(event)=>setPhone(event.target.value)}
                   />
                 </div>
                 <div class="mb-3">
@@ -95,26 +142,15 @@ export default function Register() {
                     type="password"
                     class={`form-control ${styles.but}`}
                     id="exampleInputPassword1"
-                    placeholder="Masukan Password Anda"
-                  />
-                </div>
-                <div class="mb-3">
-                  <label
-                    for="exampleInputPassword1"
-                    class={`form-label ${styles.label}`}
-                  >
-                    Konfirmasi Password
-                  </label>
-                  <input
-                    type="password"
-                    class={`form-control ${styles.but}`}
-                    id="exampleInputPassword1"
-                    placeholder="Masukan Konfirmasi Password Anda"
+                    placeholder="Confirm Your Password"
+                    onChange={(event)=>setPassword(event.target.value)}
                   />
                 </div>
                 <div className="d-grid">
-                  <button type="submit" class={`btn ${styles.butLog}`}>
-                    Daftar
+                  <button type="submit" class={`btn ${styles.butLog}`}
+                  onClick={(handleRegist)}
+                  disabled={loading}>
+                    {loading?"loading...":"Register"}
                   </button>
                 </div>
               </form>

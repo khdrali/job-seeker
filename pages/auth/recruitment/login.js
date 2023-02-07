@@ -1,7 +1,40 @@
 import Head from "next/head";
 import styles from "../../../styles/login.module.scss";
+import { env } from "@/next.config";
+import axios from "axios";
+import { useEffect, useState } from "react";
+import *as React from 'react'
 
 export default function Login() {
+  const [email,setEmail]=React.useState("")
+  const[password,setPassword]=React.useState("")
+  const [error,setError]=React.useState(null)
+  const [errMsg,setErrMsg]=React.useState("")
+  const [loading,setLoading]=React.useState(false)
+
+  const handleSubbmit= async()=>{
+    try {
+      setLoading(true)
+
+     const connect = await axios.post(`/api/login`,{
+      email,
+      password
+     })
+     const profile = JSON.stringify(connect?.data?.data)
+     const token = connect?.data?.token
+     localStorage.setItem("profile", profile)
+     localStorage.setItem("token",token)
+    } catch (error) {
+      setError(error?.response?.data?.message)
+    }
+  }
+
+  // useEffect(()=>{
+  //   axios.get(`${env.NEXT_APP_URL_BACKEND}`)
+  //   .then((res)=>console.log(res))
+  //   console.log(env.NEXT_APP_URL_BACKEND)
+  // },[])
+
   return (
     <>
       <Head>
@@ -39,6 +72,7 @@ export default function Login() {
                     id="exampleInputEmail1"
                     aria-describedby="emailHelp"
                     placeholder="Masukan Email Anda"
+                    onChange={(event)=>setEmail(event.target.value)}
                   />
                   <div id="emailHelp" class="form-text"></div>
                 </div>
@@ -54,6 +88,7 @@ export default function Login() {
                     class={`form-control ${styles.but}`}
                     id="exampleInputPassword1"
                     placeholder="Masukan Password Anda"
+                    onChange={(event)=>setPassword(event.target.value)}
                   />
                 </div>
                 <div class="mb-3 form-check">
@@ -67,8 +102,11 @@ export default function Login() {
                   </label>
                 </div>
                 <div className="d-grid">
-                  <button type="submit" class={`btn ${styles.butLog}`}>
-                    Login
+                  <button type="submit" class={`btn ${styles.butLog}`}
+                   onClick={handleSubbmit}
+                    disabled={loading}
+                  >
+                    {loading?"Loading...":"Login"}
                   </button>
                 </div>
               </form>
