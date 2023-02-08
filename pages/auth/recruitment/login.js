@@ -2,15 +2,23 @@ import Head from "next/head";
 import styles from "../../../styles/login.module.scss";
 import { env } from "@/next.config";
 import axios from "axios";
-import { useEffect, useState } from "react";
 import *as React from 'react'
+import { useRouter } from "next/router";
 
 export default function Login() {
+  const router  = useRouter()
   const [email,setEmail]=React.useState("")
   const[password,setPassword]=React.useState("")
   const [error,setError]=React.useState(null)
-  const [errMsg,setErrMsg]=React.useState("")
   const [loading,setLoading]=React.useState(false)
+
+  React.useEffect(()=>{
+    let checkIsLogin= localStorage.getItem("profile") && localStorage.getItem("token")
+    console.log(checkIsLogin);
+    if(checkIsLogin){
+      router.replace("/")
+    }
+  }, [])
 
   const handleSubbmit= async()=>{
     try {
@@ -20,10 +28,17 @@ export default function Login() {
       email,
       password
      })
+     setLoading(false)
+     setError(null)
+
      const profile = JSON.stringify(connect?.data?.data)
      const token = connect?.data?.token
-     localStorage.setItem("profile", profile)
-     localStorage.setItem("token",token)
+     if(connect?.data?.data.recruiter_id){
+       localStorage.setItem("profile", profile)
+       localStorage.setItem("token",token)
+     }else{
+      setError("Login Failed, Please Use Recruiter Account")
+     }
     } catch (error) {
       setError(error?.response?.data?.message)
     }

@@ -1,7 +1,18 @@
  import styles from "../../styles/components/listjob.module.scss"
 import Louis from "../../images/Louis.jpg"
+import axios from "axios"
+import React from "react"
 
-export default function listJob(){
+function listJob(props){
+  console.log(props);
+  const {
+    listData:{
+      jobList: {
+        data: { rows, count },
+      },
+    }
+      
+  } = props;
     return(
         <>
          <div className={styles.content}>
@@ -17,8 +28,7 @@ export default function listJob(){
                         PHP
                       </button>
                       <button type="button" class={styles.skill} disabled>
-                        Javascript
-                      </button>
+                  </button>
                       <button type="button" class={styles.skill} disabled>
                         HTML
                       </button>
@@ -171,3 +181,20 @@ export default function listJob(){
         </>
     )
 }
+
+
+
+// export async function getServerSideProps() {
+//   const jobList = await axios.get(
+//     `${process.env.NEXT_PUBLIC_API_URL}/v1/user/list?limit=10&page=1`
+//   );
+//   const convertData = jobList.data;
+
+//   return {
+//     props: {
+//       jobList: convertData,
+//     }, // will be passed to the page component as props
+//   };
+// }
+
+export default listJob

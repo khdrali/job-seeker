@@ -3,8 +3,11 @@ import Navbar from "@/components/organism/Navbar";
 import Footer from "@/components/organism/Footer"
 import ListJob from "@/components/moleculs/ListJob";
 import styles from "@/styles/Home.module.scss";
+import React from "react";
+import axios from "axios";
 
-export default function Home() {
+export default function Home(props) {
+
   return (
     <>
       <Head>
@@ -32,7 +35,7 @@ export default function Home() {
               Search
             </button>
           </div>
-          <ListJob />
+          <ListJob listData={props} />
           <nav aria-label="Page navigation example">
   <ul class='pagination justify-content-center'>
     <li class={`page-item ${styles.pagination}`}>
@@ -55,4 +58,15 @@ export default function Home() {
       </main>
     </>
   );
+}
+
+
+export async function getServerSideProps(context) {
+  const job = await axios.get(`${process.env.NEXT_PUBLIC_URL_BACKEND}/v1/user/list`);
+  const jobData = job.data
+  return{
+    props:{
+      jobList:jobData,
+    }
+  }
 }

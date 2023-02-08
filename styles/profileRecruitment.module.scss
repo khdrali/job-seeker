@@ -1,0 +1,164 @@
+.borderLeft{
+    margin-top: 20px;
+    height: 770px;
+    border: 3px;
+    background: #FFFFFF;
+    border-radius: 8px;
+
+    img{
+        margin-top: 20px;
+    }
+
+    h2{
+        font-family: 'Open Sans';
+        font-style: normal;
+        font-weight: 600;
+        font-size: 22px;
+        line-height: 56px;
+        color: #1F2A36;
+        text-align: left;
+        margin-left: 20px;
+        margin-top: 20px;
+    }
+
+    .role{
+        font-family: 'Open Sans';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 24px;
+        color: #1F2A36;
+        text-align: left;
+        margin-left: 20px;
+    }
+
+    .job{
+        font-family: 'Open Sans';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 20px;
+        color: #9EA0A5;
+        text-align: left;
+        margin-left: 20px;
+    }
+
+    .bio{
+        font-family: 'Open Sans';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 24px;
+        color: #9EA0A5;
+        text-align: left;
+        margin-left: 20px;
+    }
+
+    .button{
+        background: #5E50A1;
+        border-radius: 4px;
+        font-family: 'Open Sans';
+        font-style: normal;
+        font-weight: 700;
+        font-size: 16px;
+        line-height: 20px;
+        color: #FFFFFF;
+        height: 40px;
+        width: 200px;
+        border-color: #5E50A1;
+        margin-top: 20px;
+    }
+
+    h4{
+        font-family: 'Open Sans';
+        font-style: normal;
+        font-weight: 600;
+        font-size: 22px;
+        line-height: 24px;
+        color: #1F2A36;
+        text-align: left;
+        margin-left: 20px;
+        margin-top: 30px;
+    }
+
+    .skill{
+        background: rgba(251, 176, 23, 0.6);
+        border: 1px solid #FBB017;
+        border-radius: 4px;
+        font-family: 'Open Sans';
+        font-style: normal;
+        font-weight: 600;
+        font-size: 12px;
+        line-height: 20px;
+        color: #FFFFFF;
+        height: 30px;
+        width: 100px;
+        margin-left: 20px;
+        margin-top: 20px;
+    }
+
+    .contact{
+        margin-top: 20px;
+        margin-bottom: 20px!important;
+        
+        .account{
+            font-family: 'Open Sans';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 14px;
+            line-height: 20px;
+            color: #9EA0A5;
+            margin-top: 20px;
+        }
+    
+        .icon{
+            margin-left: 20px;
+        }
+    }
+}
+
+.borderRight{
+    background: #FFFFFF;
+    border-radius: 8px;
+    width: 750px;
+    height: 500px;
+    margin-top: 20px;
+
+    .navBar{
+        margin-left: 30px;
+        margin-top: 30px;
+
+        a{
+            font-family: 'Open Sans';
+            font-style: normal;
+            font-weight: 100;
+            font-size: 22px;
+            line-height: 30px;
+            color: #1F2A36;
+        }
+
+    }
+
+    .porto{
+        margin-left: 30px;
+        margin-top: 30px;
+
+
+        img{
+            width: 200px;
+            height: 130px;
+            border-radius: 4px;
+        }
+
+        p{
+            font-family: 'Open Sans';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 14px;
+            line-height: 24px;
+            color: #1F2A36;
+            margin-top: 10px;
+        }
+    }
+
+}
