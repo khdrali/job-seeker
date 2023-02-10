@@ -7,14 +7,20 @@ import Mail from "../../../images/mail.png";
 import Instagram from "../../../images/instagram.png";
 import Github from "../../../images/github.jpg";
 import Gitlab from "../../../images/gitlab.jpg";
-import Porto1 from "../../../images/Portofolio/porto1.jpg"
-import Porto2 from "../../../images/Portofolio/porto2.jpg"
-import Porto3 from "../../../images/Portofolio/porto3.jpg"
-import Porto4 from "../../../images/Portofolio/porto4.jpg"
-import Porto5 from "../../../images/Portofolio/porto5.jpg"
-import Porto6 from "../../../images/Portofolio/porto6.jpg"
+import Porto1 from "../../../images/Portofolio/porto1.jpg";
+import Porto2 from "../../../images/Portofolio/porto2.jpg";
+import Porto3 from "../../../images/Portofolio/porto3.jpg";
+import Porto4 from "../../../images/Portofolio/porto4.jpg";
+import Porto5 from "../../../images/Portofolio/porto5.jpg";
+import Porto6 from "../../../images/Portofolio/porto6.jpg";
+import { useRouter } from "next/router";
+import axios from "axios";
+import React from "react";
 
-export default function profileRecruitment() {
+
+export default function profileRecruitment(props) {
+  const [profile, setProfile]= React.useState(props.jobList.data[0])
+  console.log(profile);
   return (
     <>
       <Head>
@@ -29,14 +35,12 @@ export default function profileRecruitment() {
           <div className="row">
             <div className="col-4">
               <div className={`border ${styles.borderLeft}`}>
-                <img src={Louis.src} />
-                <h2>Louis Tomlinson</h2>
-                <p className={styles.role}>Web Developer</p>
+                <img src={profile.user.photo_profile} />
+                <h2>{profile.user.fullname}</h2>
+                <p className={styles.role}>{profile.job}</p>
                 <p className={styles.job}>Freelancer</p>
                 <p className={styles.bio}>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                  Vestibulum erat orci, mollis nec gravida sed, ornare quis
-                  urna. Curabitur eu lacus fringilla, vestibulum risus at.
+                  {profile.description}
                 </p>
                 <button type="button" className={styles.button}>
                   Hire
@@ -98,34 +102,34 @@ export default function profileRecruitment() {
                   </li>
                 </ul>
                 <div className="container text-center">
-                <div className="row">
-    <div className={`col-3 ${styles.porto}`}>
-      <img src={Porto1.src}/>
-      <p>Reminder App</p>
-    </div>
-    <div className={`col-3 ${styles.porto}`}>
-    <img src={Porto2.src}/>
-    <p>Social Media App</p>
-    </div>
-    <div className={`col-3 ${styles.porto}`}>
-    <img src={Porto3.src}/>
-    <p>Project Management Web</p>
-    </div>
-  </div>
-  <div className="row">
-    <div className={`col-3 ${styles.porto}`}>
-      <img src={Porto4.src}/>
-      <p>Reminder App</p>
-    </div>
-    <div className={`col-3 ${styles.porto}`}>
-    <img src={Porto5.src}/>
-    <p>Social Media App</p>
-    </div>
-    <div className={`col-3 ${styles.porto}`}>
-    <img src={Porto6.src}/>
-    <p>Project Management Web</p>
-    </div>
-  </div>
+                  <div className="row">
+                    <div className={`col-3 ${styles.porto}`}>
+                      <img src={Porto1.src} />
+                      <p>Reminder App</p>
+                    </div>
+                    <div className={`col-3 ${styles.porto}`}>
+                      <img src={Porto2.src} />
+                      <p>Social Media App</p>
+                    </div>
+                    <div className={`col-3 ${styles.porto}`}>
+                      <img src={Porto3.src} />
+                      <p>Project Management Web</p>
+                    </div>
+                  </div>
+                  <div className="row">
+                    <div className={`col-3 ${styles.porto}`}>
+                      <img src={Porto4.src} />
+                      <p>Reminder App</p>
+                    </div>
+                    <div className={`col-3 ${styles.porto}`}>
+                      <img src={Porto5.src} />
+                      <p>Social Media App</p>
+                    </div>
+                    <div className={`col-3 ${styles.porto}`}>
+                      <img src={Porto6.src} />
+                      <p>Project Management Web</p>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -135,4 +139,18 @@ export default function profileRecruitment() {
       <Footer />
     </>
   );
+}
+
+
+export async function getServerSideProps(context) {
+  const id=context.query.id
+  const job = await axios.get(
+    `${process.env.NEXT_PUBLIC_URL_BACKEND}/v1/user/detail/${id}`
+  );
+  const jobData = job.data;
+  return {
+    props: {
+      jobList: jobData,
+    },
+  };
 }

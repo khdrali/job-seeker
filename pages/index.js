@@ -1,12 +1,39 @@
 import Head from "next/head";
 import Navbar from "@/components/organism/Navbar";
-import Footer from "@/components/organism/Footer"
+import Footer from "@/components/organism/Footer";
 import ListJob from "@/components/moleculs/ListJob";
 import styles from "@/styles/Home.module.scss";
-import React from "react";
+import React, { useEffect } from "react";
 import axios from "axios";
 
 export default function Home(props) {
+  const count = props.jobList.data.count;
+
+  const [page, setPage] = React.useState(1);
+  const [total, setTotal] = React.useState(Math.ceil(count / 5));
+  const [dataPagination, setDataPagination] = React.useState([]);
+  const [keyword, setKeyword] = React.useState("")
+  console.log(keyword);
+  const getDataByPage = async (page) => {
+
+    const jobListData = await axios.get(
+      `${process.env.NEXT_PUBLIC_URL_BACKEND}/v1/user/list?limit=5&page=${page}`
+    )
+    .then(({data})=>{
+      setDataPagination(data?.data?.rows);
+      props.jobList.data.rows = dataPagination
+    })
+  };
+  const search = async()=>{
+     await axios.get(
+      `${process.env.NEXT_PUBLIC_URL_BACKEND}/v1/user/list?keyword=${keyword}`
+    )
+    .then((res)=>{
+      setDataPagination(res.data?.data?.rows) 
+      props.jobList.data.rows = dataPagination
+    })
+    .catch((err)=>console.log(err))
+  }
 
   return (
     <>
@@ -26,47 +53,101 @@ export default function Home(props) {
               placeholder="Search For Any Skill"
               aria-label="Example text with button addon"
               aria-describedby="button-addon1"
+              onChange={(event)=>setKeyword(event.target.value)}
             />
             <button
               class={`btn ${styles.search}`}
               type="button"
               id="button-addon1"
+              onClick={()=>{
+                search()
+              }}
             >
               Search
             </button>
           </div>
+          {/* {rows?.map((item, key) => (
+              <React.Fragment key={key}>
+                <ListJob
+                  item={{
+                    image: item?.["user.photo_profile"],
+                    name: item?.["user.fullname"],
+                    job: item?.job,
+                    location: item?.domicile,
+                    skills: item?.skills,
+                  }}
+                />
+                <hr />
+              </React.Fragment>
+            ))} */}
           <ListJob listData={props} />
           <nav aria-label="Page navigation example">
-  <ul class='pagination justify-content-center'>
-    <li class={`page-item ${styles.pagination}`}>
-      <a class={`page-link ${styles.paginationText}`} href="#" aria-label="Previous">
-        <span aria-hidden="true">&laquo;</span>
-      </a>
-    </li>
-    <li class={`page-item ${styles.pagination}`}><a class={`page-link ${styles.paginationText}`} href="#">1</a></li>
-    <li class={`page-item ${styles.pagination}`}><a class={`page-link ${styles.paginationText}`} href="#">2</a></li>
-    <li class={`page-item ${styles.pagination}`}><a class={`page-link ${styles.paginationText}`} href="#">3</a></li>
-    <li class={`page-item ${styles.pagination}`}>
-      <a class={`page-link ${styles.paginationText}`} href="#" aria-label="Next">
-        <span aria-hidden="true">&raquo;</span>
-      </a>
-    </li>
-  </ul>
-</nav>
+            <ul class="pagination justify-content-center">
+              <li class={`page-item ${styles.pagination}`}
+              onClick={()=>{
+                if(page>1){
+                  getDataByPage(page-1);
+                  setPage(page-1);
+                }
+              }}
+              >
+                <a
+                  class={`page-link ${styles.paginationText}`}
+                  href="#"
+                  aria-label="Previous"
+                >
+                  <span aria-hidden="true">Previous</span>
+                </a>
+              </li>
+              {[...new Array(total)].map((item,key)=>{
+                let currentPage = ++key
+                return(
+              <li class={`page-item ${styles.pagination} ${page===currentPage ? "active":""}`}
+              key={currentPage}
+              onClick={()=>{
+                getDataByPage(currentPage)
+                setPage(currentPage)
+              }}
+              >
+                <a class={`page-link ${styles.paginationText}`} href="#">
+                  {currentPage}
+                </a>
+              </li>
+                )
+              })}
+              <li class={`page-item ${styles.pagination}`}
+              onClick={()=>{
+                if(page<total){
+                  getDataByPage(page+1)
+                  setPage(page+1)
+                }
+              }}
+              >
+                <a
+                  class={`page-link ${styles.paginationText}`}
+                  href="#"
+                  aria-label="Next"
+                >
+                  <span aria-hidden="true">Next</span>
+                </a>
+              </li>
+            </ul>
+          </nav>
         </div>
-          <Footer />
+        <Footer />
       </main>
     </>
   );
 }
 
-
 export async function getServerSideProps(context) {
-  const job = await axios.get(`${process.env.NEXT_PUBLIC_URL_BACKEND}/v1/user/list`);
-  const jobData = job.data
-  return{
-    props:{
-      jobList:jobData,
-    }
-  }
+  const job = await axios.get(
+    `${process.env.NEXT_PUBLIC_URL_BACKEND}/v1/user/list?limit=5&page=1`
+  );
+  const jobData = job.data;
+  return {
+    props: {
+      jobList: jobData,
+    },
+  };
 }

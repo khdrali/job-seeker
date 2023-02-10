@@ -1,200 +1,83 @@
- import styles from "../../styles/components/listjob.module.scss"
-import Louis from "../../images/Louis.jpg"
-import axios from "axios"
-import React from "react"
+import styles from "../../styles/components/listjob.module.scss";
+import Louis from "../../images/Louis.jpg";
+import axios from "axios";
+import React from "react";
+import Link from "next/link";
 
-function listJob(props){
-  console.log(props);
+function listJob(props) {
   const {
-    listData:{
+    listData: {
       jobList: {
         data: { rows, count },
       },
-    }
-      
+    },
   } = props;
-    return(
-        <>
-         <div className={styles.content}>
+  return (
+    <>
+      <div className={styles.content}>
+        {rows?.map((item, key) => (
+          <React.Fragment key={key}>
             <div class={`row ${styles.data}`}>
               <div class="col-6">
                 <div class="row row-cols-auto">
-                  <img src={Louis.src} />
+                  <img src={item?.["user.photo_profile"]} style={{width:'200px', height:'150px'}} />
                   <div class={`col ${styles.identity}`}>
-                    <h4>Louis Tomlinson</h4>
-                    <p>Web Development</p>
-                    <div className="row">
-                      <button type="button" class={styles.skill} disabled>
-                        PHP
-                      </button>
-                      <button type="button" class={styles.skill} disabled>
-                  </button>
-                      <button type="button" class={styles.skill} disabled>
-                        HTML
-                      </button>
-                    </div>
+                    <h4>{item?.["user.fullname"]}</h4>
+                    <p>{item?.job}</p>
+                    {item?.skills?.length !== 0 ? (
+                      <React.Fragment>
+                        {item?.skills
+                          .map((_item) => (
+                            <span
+                              className={`badge text-bg-warning mx-1 ${styles.skill}`}
+                              key={_item}
+                            >
+                              {_item}
+                            </span>
+                          ))
+                          .slice(0, 3)}
+
+                        <span
+                          className={`badge text-bg-warning mx-1 ${styles.skill}`}
+                        >
+                          +{item?.skills.slice(3, item?.skills?.length)?.length}
+                        </span>
+                      </React.Fragment>
+                    ) : null}
+                    {/* {item?.skills?.slice(0,3).map((_item)=>(
+                           
+                           <div className="row"key={_item}>
+                            {_item}
+                            {item?.skills.slice(3,item?.skills?.length)?.length?(
+                             <button type="button" class={styles.skill} disabled>
+                               +{item?.skills.slice(3,item?.skills?.length)?.length}
+                             </button>
+                            ):null}
+                           </div>
+                           ))} */}
+                    {/* //      <button type="button" class={styles.skill} disabled>
+                        //  </button>
+                        //      <button type="button" class={styles.skill} disabled>
+                        //        HTML
+                        //      </button> */}
                   </div>
                 </div>
               </div>
               <div class="col-2 offset-4">
+                <Link href={`/auth/recruitment/${item.id}`}>
                 <button type="button" class={`btn ${styles.open}`}>
                   Lihat Profile
                 </button>
+                </Link>
               </div>
             </div>
-            <div class={`row ${styles.data}`}>
-              <div class="col-6">
-                <div class="row row-cols-auto">
-                  <img src={Louis.src} />
-                  <div class={`col ${styles.identity}`}>
-                    <h4>Louis Tomlinson</h4>
-                    <p>Web Development</p>
-                    <div className="row">
-                      <button type="button" class={styles.skill} disabled>
-                        PHP
-                      </button>
-                      <button type="button" class={styles.skill} disabled>
-                        Javascript
-                      </button>
-                      <button type="button" class={styles.skill} disabled>
-                        HTML
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="col-2 offset-4">
-                <button type="button" class={`btn ${styles.open}`}>
-                  Lihat Profile
-                </button>
-              </div>
-            </div>
-            <div class={`row ${styles.data}`}>
-              <div class="col-6">
-                <div class="row row-cols-auto">
-                  <img src={Louis.src} />
-                  <div class={`col ${styles.identity}`}>
-                    <h4>Louis Tomlinson</h4>
-                    <p>Web Development</p>
-                    <div className="row">
-                      <button type="button" class={styles.skill} disabled>
-                        PHP
-                      </button>
-                      <button type="button" class={styles.skill} disabled>
-                        Javascript
-                      </button>
-                      <button type="button" class={styles.skill} disabled>
-                        HTML
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="col-2 offset-4">
-                <button type="button" class={`btn ${styles.open}`}>
-                  Lihat Profile
-                </button>
-              </div>
-            </div>
-            <div class={`row ${styles.data}`}>
-              <div class="col-6">
-                <div class="row row-cols-auto">
-                  <img src={Louis.src} />
-                  <div class={`col ${styles.identity}`}>
-                    <h4>Louis Tomlinson</h4>
-                    <p>Web Development</p>
-                    <div className="row">
-                      <button type="button" class={styles.skill} disabled>
-                        PHP
-                      </button>
-                      <button type="button" class={styles.skill} disabled>
-                        Javascript
-                      </button>
-                      <button type="button" class={styles.skill} disabled>
-                        HTML
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="col-2 offset-4">
-                <button type="button" class={`btn ${styles.open}`}>
-                  Lihat Profile
-                </button>
-              </div>
-            </div>
-            <div class={`row ${styles.data}`}>
-              <div class="col-6">
-                <div class="row row-cols-auto">
-                  <img src={Louis.src} />
-                  <div class={`col ${styles.identity}`}>
-                    <h4>Louis Tomlinson</h4>
-                    <p>Web Development</p>
-                    <div className="row">
-                      <button type="button" class={styles.skill} disabled>
-                        PHP
-                      </button>
-                      <button type="button" class={styles.skill} disabled>
-                        Javascript
-                      </button>
-                      <button type="button" class={styles.skill} disabled>
-                        HTML
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="col-2 offset-4">
-                <button type="button" class={`btn ${styles.open}`}>
-                  Lihat Profile
-                </button>
-              </div>
-            </div>
-            <div class={`row ${styles.data}`}>
-              <div class="col-6">
-                <div class="row row-cols-auto">
-                  <img src={Louis.src} />
-                  <div class={`col ${styles.identity}`}>
-                    <h4>Louis Tomlinson</h4>
-                    <p>Web Development</p>
-                    <div className="row">
-                      <button type="button" class={styles.skill} disabled>
-                        PHP
-                      </button>
-                      <button type="button" class={styles.skill} disabled>
-                        Javascript
-                      </button>
-                      <button type="button" class={styles.skill} disabled>
-                        HTML
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="col-2 offset-4">
-                <button type="button" class={`btn ${styles.open}`}>
-                  Lihat Profile
-                </button>
-              </div>
-            </div>
-          </div>
-        </>
-    )
+            <hr />
+          </React.Fragment>
+        ))}
+      </div>
+    </>
+  );
 }
 
 
-
-// export async function getServerSideProps() {
-//   const jobList = await axios.get(
-//     `${process.env.NEXT_PUBLIC_API_URL}/v1/user/list?limit=10&page=1`
-//   );
-//   const convertData = jobList.data;
-
-//   return {
-//     props: {
-//       jobList: convertData,
-//     }, // will be passed to the page component as props
-//   };
-// }
-
-export default listJob
+export default listJob;
