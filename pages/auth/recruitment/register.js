@@ -2,6 +2,7 @@ import Head from "next/head";
 import styles from "../../../styles/register.module.scss";
 import *as React from 'react'
 import axios from "axios";
+import Link from "next/link";
 
 export default function Register() {
   const [fullname,setFullName]=React.useState("")
@@ -154,9 +155,11 @@ export default function Register() {
                   </button>
                 </div>
               </form>
+              <Link href={"/auth/recruitment/login"}>
               <div className={styles.account}>
                 Anda sudah punya akun? <span>Masuk disini</span>
               </div>
+              </Link>
             </div>
           </div>
         </div>

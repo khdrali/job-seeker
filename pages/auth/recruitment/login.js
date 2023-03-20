@@ -4,6 +4,7 @@ import { env } from "@/next.config";
 import axios from "axios";
 import *as React from 'react'
 import { useRouter } from "next/router";
+import Link from "next/link";
 
 export default function Login() {
   const router  = useRouter()
@@ -125,9 +126,11 @@ export default function Login() {
                   </button>
                 </div>
               </form>
+              <Link href={"/auth/recruitment/register"}>
               <div className={styles.account}>
                 Anda sudah punya akun? <span>Daftar disini</span>
               </div>
+              </Link>
             </div>
           </div>
         </div>
