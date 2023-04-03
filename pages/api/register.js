@@ -2,16 +2,20 @@ import axios from "axios";
 
 export default function handler(req, res) {
   try {
-    const {fullname, email, company, position, phone_number, password } = req.body;
+    const { fullname, email, company, position, phone_number, password } =
+      req.body;
     axios
-      .post(`https://different-lion-tunic.cyclic.app/v1/auth/register/recruiter`, {
-        fullname,
-        email,
-        company,
-        position,
-        phone_number,
-        password
-      })
+      .post(
+        `${process.env.NEXT_PUBLIC_URL_BACKEND}/v1/auth/register/recruiter`,
+        {
+          fullname,
+          email,
+          company,
+          position,
+          phone_number,
+          password,
+        }
+      )
       .then((response) => {
         res.status(200).json(response.data);
       })

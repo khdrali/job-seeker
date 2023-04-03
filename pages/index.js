@@ -12,28 +12,50 @@ export default function Home(props) {
   const [page, setPage] = React.useState(1);
   const [total, setTotal] = React.useState(Math.ceil(count / 5));
   const [dataPagination, setDataPagination] = React.useState([]);
-  const [keyword, setKeyword] = React.useState("")
-  console.log(keyword);
-  const getDataByPage = async (page) => {
+  const [keyword, setKeyword] = React.useState("");
+  const [order, setOrder] = React.useState("ASC");
+  const [sort, setSort] = React.useState("id");
 
-    const jobListData = await axios.get(
-      `${process.env.NEXT_PUBLIC_URL_BACKEND}/v1/user/list?limit=5&page=${page}`
-    )
-    .then(({data})=>{
-      setDataPagination(data?.data?.rows);
-      props.jobList.data.rows = dataPagination
-    })
+  // const sortData = (params) => {
+  //   axios
+  //     .get(
+  //       `${process.env.NEXT_PUBLIC_URL_BACKEND}/v1/user/list?limit=5&page=${page}&order=${order}&sortBy=${sort}`
+  //     )
+  //     .then((res) => {
+  //       setDataPagination(res?.data?.data?.rows);
+  //     });
+  // };
+
+  React.useEffect(() => {
+    axios
+      .get(
+        `${process.env.NEXT_PUBLIC_URL_BACKEND}/v1/user/list?limit=5&page=${page}&order=${order}&sortBy=${sort}`
+      )
+      .then((res) => {
+        setDataPagination(res?.data?.data?.rows);
+      });
+  }, [order]);
+  const getDataByPage = (page) => {
+    const jobListData = axios
+      .get(
+        `${process.env.NEXT_PUBLIC_URL_BACKEND}/v1/user/list?limit=5&page=${page}`
+      )
+      .then(({ data }) => {
+        setDataPagination(data?.data?.rows);
+        props.jobList.data.rows = dataPagination;
+      });
   };
-  const search = async()=>{
-     await axios.get(
-      `${process.env.NEXT_PUBLIC_URL_BACKEND}/v1/user/list?keyword=${keyword}`
-    )
-    .then((res)=>{
-      setDataPagination(res.data?.data?.rows) 
-      props.jobList.data.rows = dataPagination
-    })
-    .catch((err)=>console.log(err))
-  }
+  const search = async () => {
+    await axios
+      .get(
+        `${process.env.NEXT_PUBLIC_URL_BACKEND}/v1/user/list?keyword=${keyword}`
+      )
+      .then((res) => {
+        setDataPagination(res.data?.data?.rows);
+        props.jobList.data.rows = dataPagination;
+      })
+      .catch((err) => console.log(err));
+  };
 
   return (
     <>
@@ -53,14 +75,25 @@ export default function Home(props) {
               placeholder="Search For Any Skill"
               aria-label="Example text with button addon"
               aria-describedby="button-addon1"
-              onChange={(event)=>setKeyword(event.target.value)}
+              onChange={(event) => setKeyword(event.target.value)}
             />
+            <select
+              onChange={(e) => {
+                setOrder(e.target.value);
+              }}
+            >
+              <option value="sort" selected disabled>
+                Sort
+              </option>
+              <option value="DESC">Sort By Newst</option>
+              <option value="ASC">Sort By Last</option>
+            </select>
             <button
               class={`btn ${styles.search}`}
               type="button"
               id="button-addon1"
-              onClick={()=>{
-                search()
+              onClick={() => {
+                search();
               }}
             >
               Search
@@ -83,13 +116,14 @@ export default function Home(props) {
           <ListJob listData={props} />
           <nav aria-label="Page navigation example">
             <ul class="pagination justify-content-center">
-              <li class={`page-item ${styles.pagination}`}
-              onClick={()=>{
-                if(page>1){
-                  getDataByPage(page-1);
-                  setPage(page-1);
-                }
-              }}
+              <li
+                class={`page-item ${styles.pagination}`}
+                onClick={() => {
+                  if (page > 1) {
+                    getDataByPage(page - 1);
+                    setPage(page - 1);
+                  }
+                }}
               >
                 <a
                   class={`page-link ${styles.paginationText}`}
@@ -99,29 +133,33 @@ export default function Home(props) {
                   <span aria-hidden="true">Previous</span>
                 </a>
               </li>
-              {[...new Array(total)].map((item,key)=>{
-                let currentPage = ++key
-                return(
-              <li class={`page-item ${styles.pagination} ${page===currentPage ? "active":""}`}
-              key={currentPage}
-              onClick={()=>{
-                getDataByPage(currentPage)
-                setPage(currentPage)
-              }}
-              >
-                <a class={`page-link ${styles.paginationText}`} href="#">
-                  {currentPage}
-                </a>
-              </li>
-                )
+              {[...new Array(total)].map((item, key) => {
+                let currentPage = ++key;
+                return (
+                  <li
+                    class={`page-item ${styles.pagination} ${
+                      page === currentPage ? "active" : ""
+                    }`}
+                    key={currentPage}
+                    onClick={() => {
+                      getDataByPage(currentPage);
+                      setPage(currentPage);
+                    }}
+                  >
+                    <a class={`page-link ${styles.paginationText}`} href="#">
+                      {currentPage}
+                    </a>
+                  </li>
+                );
               })}
-              <li class={`page-item ${styles.pagination}`}
-              onClick={()=>{
-                if(page<total){
-                  getDataByPage(page+1)
-                  setPage(page+1)
-                }
-              }}
+              <li
+                class={`page-item ${styles.pagination}`}
+                onClick={() => {
+                  if (page < total) {
+                    getDataByPage(page + 1);
+                    setPage(page + 1);
+                  }
+                }}
               >
                 <a
                   class={`page-link ${styles.paginationText}`}

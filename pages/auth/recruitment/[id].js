@@ -17,9 +17,8 @@ import { useRouter } from "next/router";
 import axios from "axios";
 import React from "react";
 
-
 export default function profileRecruitment(props) {
-  const [profile, setProfile]= React.useState(props.jobList.data[0])
+  const [profile, setProfile] = React.useState(props.jobList.data[0]);
   console.log(profile);
   return (
     <>
@@ -31,103 +30,109 @@ export default function profileRecruitment(props) {
       </Head>
       <Navbar />
       <main>
-        <div className="container text-center">
-          <div className="row">
-            <div className="col-4">
-              <div className={`border ${styles.borderLeft}`}>
-                <img src={profile.user.photo_profile} />
-                <h2>{profile.user.fullname}</h2>
-                <p className={styles.role}>{profile.job}</p>
-                <p className={styles.job}>Freelancer</p>
-                <p className={styles.bio}>
-                  {profile.description}
-                </p>
-                <button type="button" className={styles.button}>
-                  Hire
-                </button>
-                <h4>Skills</h4>
-                <div className="row">
-                  <button type="button" class={styles.skill} disabled>
-                    PHP
+        <div className={styles.content}>
+          <div className="container text-center">
+            <div className="row">
+              <div className="col-4">
+                <div className={`border ${styles.borderLeft}`}>
+                  <img src={profile.user.photo_profile} />
+                  <h2>{profile.user.fullname}</h2>
+                  <p className={styles.role}>{profile.job}</p>
+                  <p className={styles.job}>Freelancer</p>
+                  <p className={styles.bio}>{profile.description}</p>
+                  <button type="button" className={styles.button}>
+                    Hire
                   </button>
-                  <button type="button" class={styles.skill} disabled>
-                    Javascript
-                  </button>
-                  <button type="button" class={styles.skill} disabled>
-                    HTML
-                  </button>
-                </div>
-                <div class={`container text-center ${styles.contact}`}>
-                  <div className="row row-cols-auto">
-                    <div className={`col ${styles.icon}`}>
-                      <img src={Mail.src} />
-                    </div>
-                    <div className={`col ${styles.account}`}>
-                      Louistommo@gmail.com
-                    </div>
+                  <h4>Skills</h4>
+                  <div className="row">
+                    <button type="button" class={styles.skill} disabled>
+                      PHP
+                    </button>
+                    <button type="button" class={styles.skill} disabled>
+                      Javascript
+                    </button>
+                    <button type="button" class={styles.skill} disabled>
+                      HTML
+                    </button>
                   </div>
-                  <div className="row row-cols-auto">
-                    <div className={`col ${styles.icon}`}>
-                      <img src={Instagram.src} />
+                  <div class={`container text-center ${styles.contact}`}>
+                    <div className="row row-cols-auto">
+                      <div className={`col ${styles.icon}`}>
+                        <img src={Mail.src} />
+                      </div>
+                      <div className={`col ${styles.account}`}>
+                        Louistommo@gmail.com
+                      </div>
                     </div>
-                    <div className={`col ${styles.account}`}>@Louist91</div>
-                  </div>
-                  <div className="row row-cols-auto">
-                    <div className={`col ${styles.icon}`}>
-                      <img src={Github.src} />
+                    <div className="row row-cols-auto">
+                      <div className={`col ${styles.icon}`}>
+                        <img src={Instagram.src} />
+                      </div>
+                      <div className={`col ${styles.account}`}>@Louist91</div>
                     </div>
-                    <div className={`col ${styles.account}`}>@Louistommo</div>
-                  </div>
-                  <div className="row row-cols-auto">
-                    <div className={`col ${styles.icon}`}>
-                      <img src={Gitlab.src} />
+                    <div className="row row-cols-auto">
+                      <div className={`col ${styles.icon}`}>
+                        <img src={Github.src} />
+                      </div>
+                      <div className={`col ${styles.account}`}>@Louistommo</div>
                     </div>
-                    <div className={`col ${styles.account}`}>@Louistommo91</div>
+                    <div className="row row-cols-auto">
+                      <div className={`col ${styles.icon}`}>
+                        <img src={Gitlab.src} />
+                      </div>
+                      <div className={`col ${styles.account}`}>
+                        @Louistommo91
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-            <div className="col-8">
-              <div className={`border ${styles.borderRight}`}>
-                <ul className={`nav nav-pills ${styles.navBar}`}>
-                  <li className="nav-item">
-                    <a className="nav-link active" aria-current="page" href="#">
-                      Portofolio
-                    </a>
-                  </li>
-                  <li className="nav-item">
-                    <a className="nav-link" href="#">
-                      Pengalaman Kerja
-                    </a>
-                  </li>
-                </ul>
-                <div className="container text-center">
-                  <div className="row">
-                    <div className={`col-3 ${styles.porto}`}>
-                      <img src={Porto1.src} />
-                      <p>Reminder App</p>
+              <div className="col-8">
+                <div className={`border ${styles.borderRight}`}>
+                  <ul className={`nav nav-pills ${styles.navBar}`}>
+                    <li className="nav-item">
+                      <a
+                        className="nav-link active"
+                        aria-current="page"
+                        href="#"
+                      >
+                        Portofolio
+                      </a>
+                    </li>
+                    <li className="nav-item">
+                      <a className="nav-link" href="#">
+                        Pengalaman Kerja
+                      </a>
+                    </li>
+                  </ul>
+                  <div className="container text-center">
+                    <div className="row">
+                      <div className={`col-3 ${styles.porto}`}>
+                        <img src={Porto1.src} />
+                        <p>Reminder App</p>
+                      </div>
+                      <div className={`col-3 ${styles.porto}`}>
+                        <img src={Porto2.src} />
+                        <p>Social Media App</p>
+                      </div>
+                      <div className={`col-3 ${styles.porto}`}>
+                        <img src={Porto3.src} />
+                        <p>Project Management Web</p>
+                      </div>
                     </div>
-                    <div className={`col-3 ${styles.porto}`}>
-                      <img src={Porto2.src} />
-                      <p>Social Media App</p>
-                    </div>
-                    <div className={`col-3 ${styles.porto}`}>
-                      <img src={Porto3.src} />
-                      <p>Project Management Web</p>
-                    </div>
-                  </div>
-                  <div className="row">
-                    <div className={`col-3 ${styles.porto}`}>
-                      <img src={Porto4.src} />
-                      <p>Reminder App</p>
-                    </div>
-                    <div className={`col-3 ${styles.porto}`}>
-                      <img src={Porto5.src} />
-                      <p>Social Media App</p>
-                    </div>
-                    <div className={`col-3 ${styles.porto}`}>
-                      <img src={Porto6.src} />
-                      <p>Project Management Web</p>
+                    <div className="row">
+                      <div className={`col-3 ${styles.porto}`}>
+                        <img src={Porto4.src} />
+                        <p>Reminder App</p>
+                      </div>
+                      <div className={`col-3 ${styles.porto}`}>
+                        <img src={Porto5.src} />
+                        <p>Social Media App</p>
+                      </div>
+                      <div className={`col-3 ${styles.porto}`}>
+                        <img src={Porto6.src} />
+                        <p>Project Management Web</p>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -141,9 +146,8 @@ export default function profileRecruitment(props) {
   );
 }
 
-
 export async function getServerSideProps(context) {
-  const id=context.query.id
+  const id = context.query.id;
   const job = await axios.get(
     `${process.env.NEXT_PUBLIC_URL_BACKEND}/v1/user/detail/${id}`
   );

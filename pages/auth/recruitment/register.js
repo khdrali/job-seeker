@@ -1,35 +1,35 @@
 import Head from "next/head";
 import styles from "../../../styles/register.module.scss";
-import *as React from 'react'
+import * as React from "react";
 import axios from "axios";
 import Link from "next/link";
 
 export default function Register() {
-  const [fullname,setFullName]=React.useState("")
-  const [email,setEmail]=React.useState("")
-  const [company,setCompany]=React.useState("")
-  const [position,setPosition]=React.useState("")
-  const [password,setPassword]=React.useState("")
-  const [phone_number, setPhone]=React.useState("")
-  const [loading,setLoading]=React.useState(false)
-  const [error,setError]=React.useState(null)
-  
-  const handleRegist=async()=>{
+  const [fullname, setFullName] = React.useState("");
+  const [email, setEmail] = React.useState("");
+  const [company, setCompany] = React.useState("");
+  const [position, setPosition] = React.useState("");
+  const [password, setPassword] = React.useState("");
+  const [phone_number, setPhone] = React.useState("");
+  const [loading, setLoading] = React.useState(false);
+  const [error, setError] = React.useState(null);
+
+  const handleRegist = async () => {
     try {
-      setLoading(true)
-      const regist= await axios.post(`/api/register`,{
+      setLoading(true);
+      const regist = await axios.post(`/api/register`, {
         fullname,
         email,
         company,
         position,
         phone_number,
         password,
-      })
+      });
       console.log(regist);
     } catch (error) {
-      setError(error)
+      setError(error);
     }
-  }
+  };
 
   return (
     <>
@@ -40,129 +40,129 @@ export default function Register() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className={styles.main}>
-        <div className="container">
-          <div className="row align-items-center">
-            <div className={`col-6 ${styles.left}`}>
-              <div className={styles.overlay}></div>
-              <h1>
-                Temukan developer berbakat & terbaik di berbagai bidang keahlian
-              </h1>
-            </div>
-            <div className={`col-5 offset-1 ${styles.right}`}>
-              <h2>Halo, Pewpeople</h2>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. In
-                euismod ipsum et dui rhoncus auctor.
-              </p>
-              <form>
-                <div class="mb-3">
-                  <label
-                    for="exampleInputName"
-                    class={`form-label ${styles.label}`}
-                  >
-                    Name
-                  </label>
-                  <input
-                    type="text"
-                    class={`form-control ${styles.but}`}
-                    id="exampleInputName"
-                    placeholder="Input Your Name"
-                    onChange={(event)=>setFullName(event.target.value)}
-                  />
-                </div>
-                <div class="mb-3">
-                  <label
-                    for="exampleInputEmail1"
-                    class={`form-label ${styles.label}`}
-                  >
-                    Email address
-                  </label>
-                  <input
-                    type="email"
-                    class={`form-control ${styles.but}`}
-                    id="exampleInputEmail1"
-                    aria-describedby="emailHelp"
-                    placeholder="Input Your Email"
-                    onChange={(event)=>setEmail(event.target.value)}
-                  />
-                  <div id="emailHelp" class="form-text"></div>
-                </div>
-                <div class="mb-3">
-                  <label
-                    for="exampleInputPerusahaan"
-                    class={`form-label ${styles.label}`}
-                  >
-                    Company
-                  </label>
-                  <input
-                    type="text"
-                    class={`form-control ${styles.but}`}
-                    id="exampleInputPerusahaan"
-                    placeholder="Input Company"
-                    onChange={(event)=>setCompany(event.target.value)}
-                  />
-                </div>
-                <div class="mb-3">
-                  <label
-                    for="exampleInputJabatan"
-                    class={`form-label ${styles.label}`}
-                  >
-                    Position
-                  </label>
-                  <input
-                    type="text"
-                    class={`form-control ${styles.but}`}
-                    id="exampleInputJabatan"
-                    placeholder="Input Your Position"
-                    onChange={(event)=>setPosition(event.target.value)}
-                  />
-                </div>
-                <div class="mb-3">
-                  <label
-                    for="exampleInputPassword1"
-                    class={`form-label ${styles.label}`}
-                  >
-                    Phone Number
-                  </label>
-                  <input
-                    type="number"
-                    class={`form-control ${styles.but}`}
-                    id="exampleInputPhone"
-                    placeholder="Input Phone Number"
-                    onChange={(event)=>setPhone(event.target.value)}
-                  />
-                </div>
-                <div class="mb-3">
-                  <label
-                    for="exampleInputPassword1"
-                    class={`form-label ${styles.label}`}
-                  >
-                    Password
-                  </label>
-                  <input
-                    type="password"
-                    class={`form-control ${styles.but}`}
-                    id="exampleInputPassword1"
-                    placeholder="Confirm Your Password"
-                    onChange={(event)=>setPassword(event.target.value)}
-                  />
-                </div>
-                <div className="d-grid">
-                  <button type="submit" class={`btn ${styles.butLog}`}
-                  onClick={(handleRegist)}
-                  disabled={loading}>
-                    {loading?"loading...":"Register"}
-                  </button>
-                </div>
-              </form>
-              <Link href={"/auth/recruitment/login"}>
+        {/* <div className="container"> */}
+        <div className="row align-items-center">
+          <div className={`col-6 ${styles.left}`}>
+            <div className={styles.overlay}></div>
+            <h1>
+              Temukan developer berbakat & terbaik di berbagai bidang keahlian
+            </h1>
+          </div>
+          <div className={`col-5 offset-1 ${styles.right}`}>
+            <h2>Halo, Pewpeople</h2>
+            <p>Register Your Account</p>
+            <form>
+              <div class="mb-3">
+                <label
+                  for="exampleInputName"
+                  class={`form-label ${styles.label}`}
+                >
+                  Name
+                </label>
+                <input
+                  type="text"
+                  class={`form-control ${styles.but}`}
+                  id="exampleInputName"
+                  placeholder="Input Your Name"
+                  onChange={(event) => setFullName(event.target.value)}
+                />
+              </div>
+              <div class="mb-3">
+                <label
+                  for="exampleInputEmail1"
+                  class={`form-label ${styles.label}`}
+                >
+                  Email address
+                </label>
+                <input
+                  type="email"
+                  class={`form-control ${styles.but}`}
+                  id="exampleInputEmail1"
+                  aria-describedby="emailHelp"
+                  placeholder="Input Your Email"
+                  onChange={(event) => setEmail(event.target.value)}
+                />
+                <div id="emailHelp" class="form-text"></div>
+              </div>
+              <div class="mb-3">
+                <label
+                  for="exampleInputPerusahaan"
+                  class={`form-label ${styles.label}`}
+                >
+                  Company
+                </label>
+                <input
+                  type="text"
+                  class={`form-control ${styles.but}`}
+                  id="exampleInputPerusahaan"
+                  placeholder="Input Company"
+                  onChange={(event) => setCompany(event.target.value)}
+                />
+              </div>
+              <div class="mb-3">
+                <label
+                  for="exampleInputJabatan"
+                  class={`form-label ${styles.label}`}
+                >
+                  Position
+                </label>
+                <input
+                  type="text"
+                  class={`form-control ${styles.but}`}
+                  id="exampleInputJabatan"
+                  placeholder="Input Your Position"
+                  onChange={(event) => setPosition(event.target.value)}
+                />
+              </div>
+              <div class="mb-3">
+                <label
+                  for="exampleInputPassword1"
+                  class={`form-label ${styles.label}`}
+                >
+                  Phone Number
+                </label>
+                <input
+                  type="number"
+                  class={`form-control ${styles.but}`}
+                  id="exampleInputPhone"
+                  placeholder="Input Phone Number"
+                  onChange={(event) => setPhone(event.target.value)}
+                />
+              </div>
+              <div class="mb-3">
+                <label
+                  for="exampleInputPassword1"
+                  class={`form-label ${styles.label}`}
+                >
+                  Password
+                </label>
+                <input
+                  type="password"
+                  class={`form-control ${styles.but}`}
+                  id="exampleInputPassword1"
+                  placeholder="Confirm Your Password"
+                  onChange={(event) => setPassword(event.target.value)}
+                />
+              </div>
+              <div className="d-grid">
+                <button
+                  type="submit"
+                  class={`btn ${styles.butLog}`}
+                  onClick={handleRegist}
+                  disabled={loading}
+                >
+                  {loading ? "loading..." : "Register"}
+                </button>
+              </div>
+            </form>
+            <Link href={"/auth/recruitment/login"}>
               <div className={styles.account}>
                 Anda sudah punya akun? <span>Masuk disini</span>
               </div>
-              </Link>
-            </div>
+            </Link>
           </div>
         </div>
+        {/* </div> */}
       </main>
     </>
   );
