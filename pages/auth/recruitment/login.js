@@ -73,52 +73,52 @@ export default function Login() {
             <h2>Login</h2>
 
             <form>
-              <div class="mb-3">
+              <div className="mb-3">
                 <label
                   for="exampleInputEmail1"
-                  class={`form-label ${styles.label}`}
+                  className={`form-label ${styles.label}`}
                 >
                   Email address
                 </label>
                 <input
                   type="email"
-                  class={`form-control ${styles.but}`}
+                  className={`form-control ${styles.but}`}
                   id="exampleInputEmail1"
                   aria-describedby="emailHelp"
                   placeholder="Masukan Email Anda"
                   onChange={(event) => setEmail(event.target.value)}
                 />
-                <div id="emailHelp" class="form-text"></div>
+                <div id="emailHelp" className="form-text"></div>
               </div>
-              <div class="mb-3">
+              <div className="mb-3">
                 <label
                   for="exampleInputPassword1"
-                  class={`form-label ${styles.label}`}
+                  className={`form-label ${styles.label}`}
                 >
                   Password
                 </label>
                 <input
                   type="password"
-                  class={`form-control ${styles.but}`}
+                  className={`form-control ${styles.but}`}
                   id="exampleInputPassword1"
                   placeholder="Masukan Password Anda"
                   onChange={(event) => setPassword(event.target.value)}
                 />
               </div>
-              <div class="mb-3 form-check">
+              <div className="mb-3 form-check">
                 <input
                   type="checkbox"
-                  class="form-check-input"
+                  className="form-check-input"
                   id="exampleCheck1"
                 />
-                <label class="form-check-label" for="exampleCheck1">
+                <label className="form-check-label" for="exampleCheck1">
                   Check me out
                 </label>
               </div>
               <div className="d-grid">
                 <button
                   type="submit"
-                  class={`btn ${styles.butLog}`}
+                  className={`btn ${styles.butLog}`}
                   onClick={handleSubbmit}
                   disabled={loading}
                 >
