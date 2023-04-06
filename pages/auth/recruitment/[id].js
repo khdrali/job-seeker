@@ -19,7 +19,6 @@ import React from "react";
 
 export default function profileRecruitment(props) {
   const [profile, setProfile] = React.useState(props.jobList.data[0]);
-  console.log(profile);
   return (
     <>
       <Head>
@@ -45,17 +44,17 @@ export default function profileRecruitment(props) {
                   </button>
                   <h4>Skills</h4>
                   <div className="row">
-                    <button type="button" class={styles.skill} disabled>
+                    <button type="button" className={styles.skill} disabled>
                       PHP
                     </button>
-                    <button type="button" class={styles.skill} disabled>
+                    <button type="button" className={styles.skill} disabled>
                       Javascript
                     </button>
-                    <button type="button" class={styles.skill} disabled>
+                    <button type="button" className={styles.skill} disabled>
                       HTML
                     </button>
                   </div>
-                  <div class={`container text-center ${styles.contact}`}>
+                  <div className={`container text-center ${styles.contact}`}>
                     <div className="row row-cols-auto">
                       <div className={`col ${styles.icon}`}>
                         <img src={Mail.src} />

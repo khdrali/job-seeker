@@ -52,93 +52,93 @@ export default function Register() {
             <h2>Halo, Pewpeople</h2>
             <p>Register Your Account</p>
             <form>
-              <div class="mb-3">
+              <div className="mb-3">
                 <label
                   for="exampleInputName"
-                  class={`form-label ${styles.label}`}
+                  className={`form-label ${styles.label}`}
                 >
                   Name
                 </label>
                 <input
                   type="text"
-                  class={`form-control ${styles.but}`}
+                  className={`form-control ${styles.but}`}
                   id="exampleInputName"
                   placeholder="Input Your Name"
                   onChange={(event) => setFullName(event.target.value)}
                 />
               </div>
-              <div class="mb-3">
+              <div className="mb-3">
                 <label
                   for="exampleInputEmail1"
-                  class={`form-label ${styles.label}`}
+                  className={`form-label ${styles.label}`}
                 >
                   Email address
                 </label>
                 <input
                   type="email"
-                  class={`form-control ${styles.but}`}
+                  className={`form-control ${styles.but}`}
                   id="exampleInputEmail1"
                   aria-describedby="emailHelp"
                   placeholder="Input Your Email"
                   onChange={(event) => setEmail(event.target.value)}
                 />
-                <div id="emailHelp" class="form-text"></div>
+                <div id="emailHelp" className="form-text"></div>
               </div>
-              <div class="mb-3">
+              <div className="mb-3">
                 <label
                   for="exampleInputPerusahaan"
-                  class={`form-label ${styles.label}`}
+                  className={`form-label ${styles.label}`}
                 >
                   Company
                 </label>
                 <input
                   type="text"
-                  class={`form-control ${styles.but}`}
+                  className={`form-control ${styles.but}`}
                   id="exampleInputPerusahaan"
                   placeholder="Input Company"
                   onChange={(event) => setCompany(event.target.value)}
                 />
               </div>
-              <div class="mb-3">
+              <div className="mb-3">
                 <label
                   for="exampleInputJabatan"
-                  class={`form-label ${styles.label}`}
+                  className={`form-label ${styles.label}`}
                 >
                   Position
                 </label>
                 <input
                   type="text"
-                  class={`form-control ${styles.but}`}
+                  className={`form-control ${styles.but}`}
                   id="exampleInputJabatan"
                   placeholder="Input Your Position"
                   onChange={(event) => setPosition(event.target.value)}
                 />
               </div>
-              <div class="mb-3">
+              <div className="mb-3">
                 <label
                   for="exampleInputPassword1"
-                  class={`form-label ${styles.label}`}
+                  className={`form-label ${styles.label}`}
                 >
                   Phone Number
                 </label>
                 <input
                   type="number"
-                  class={`form-control ${styles.but}`}
+                  className={`form-control ${styles.but}`}
                   id="exampleInputPhone"
                   placeholder="Input Phone Number"
                   onChange={(event) => setPhone(event.target.value)}
                 />
               </div>
-              <div class="mb-3">
+              <div className="mb-3">
                 <label
                   for="exampleInputPassword1"
-                  class={`form-label ${styles.label}`}
+                  className={`form-label ${styles.label}`}
                 >
                   Password
                 </label>
                 <input
                   type="password"
-                  class={`form-control ${styles.but}`}
+                  className={`form-control ${styles.but}`}
                   id="exampleInputPassword1"
                   placeholder="Confirm Your Password"
                   onChange={(event) => setPassword(event.target.value)}
@@ -147,7 +147,7 @@ export default function Register() {
               <div className="d-grid">
                 <button
                   type="submit"
-                  class={`btn ${styles.butLog}`}
+                  className={`btn ${styles.butLog}`}
                   onClick={handleRegist}
                   disabled={loading}
                 >

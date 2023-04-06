@@ -17,11 +17,14 @@ function listJob(props) {
       <div className={styles.content}>
         {rows?.map((item, key) => (
           <React.Fragment key={key}>
-            <div class={`row ${styles.data}`}>
-              <div class="col-6">
-                <div class="row row-cols-auto">
-                  <img src={item?.["user.photo_profile"]} style={{width:'200px', height:'150px'}} />
-                  <div class={`col ${styles.identity}`}>
+            <div className={`row ${styles.data}`}>
+              <div className="col-6">
+                <div className="row row-cols-auto">
+                  <img
+                    src={item?.["user.photo_profile"]}
+                    style={{ width: "200px", height: "150px" }}
+                  />
+                  <div className={`col ${styles.identity}`}>
                     <h4>{item?.["user.fullname"]}</h4>
                     <p>{item?.job}</p>
                     {item?.skills?.length !== 0 ? (
@@ -63,11 +66,11 @@ function listJob(props) {
                   </div>
                 </div>
               </div>
-              <div class="col-2 offset-4">
+              <div className="col-2 offset-4">
                 <Link href={`/auth/recruitment/${item.id}`}>
-                <button type="button" class={`btn ${styles.open}`}>
-                  Lihat Profile
-                </button>
+                  <button type="button" class={`btn ${styles.open}`}>
+                    Lihat Profile
+                  </button>
                 </Link>
               </div>
             </div>
@@ -78,6 +81,5 @@ function listJob(props) {
     </>
   );
 }
-
 
 export default listJob;

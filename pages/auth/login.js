@@ -14,56 +14,67 @@ export default function Login() {
         <div className="container">
           <div className="row align-items-center">
             <div className={`col-6 ${styles.left} ${styles.overlay}`}>
-                <div className={styles.overlay}></div>
-                <h1>Temukan developer berbakat & terbaik di berbagai bidang keahlian</h1>
+              <div className={styles.overlay}></div>
+              <h1>
+                Temukan developer berbakat & terbaik di berbagai bidang keahlian
+              </h1>
             </div>
             <div className={`col-5 offset-1 ${styles.right}`}>
-                <h2>Halo, Pewpeople</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In euismod ipsum et dui rhoncus auctor.</p>
-               <form>
-                <div class="mb-3">
-                  <label for="exampleInputEmail1" class={`form-label ${styles.label}`}>
+              <h2>Halo, Pewpeople</h2>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. In
+                euismod ipsum et dui rhoncus auctor.
+              </p>
+              <form>
+                <div className="mb-3">
+                  <label
+                    for="exampleInputEmail1"
+                    className={`form-label ${styles.label}`}
+                  >
                     Email address
                   </label>
                   <input
                     type="email"
-                    class={`form-control ${styles.but}`}
+                    className={`form-control ${styles.but}`}
                     id="exampleInputEmail1"
                     aria-describedby="emailHelp"
                     placeholder="Masukan Email Anda"
                   />
-                  <div id="emailHelp" class="form-text"></div>
+                  <div id="emailHelp" className="form-text"></div>
                 </div>
-                <div class="mb-3">
-                  <label for="exampleInputPassword1" class={`form-label ${styles.label}`}>
+                <div className="mb-3">
+                  <label
+                    for="exampleInputPassword1"
+                    className={`form-label ${styles.label}`}
+                  >
                     Password
                   </label>
                   <input
                     type="password"
-                    class={`form-control ${styles.but}`}
+                    className={`form-control ${styles.but}`}
                     id="exampleInputPassword1"
                     placeholder="Masukan Password Anda"
                   />
                 </div>
-                <div class="mb-3 form-check">
+                <div className="mb-3 form-check">
                   <input
                     type="checkbox"
-                    class="form-check-input"
+                    className="form-check-input"
                     id="exampleCheck1"
                   />
-                  <label class="form-check-label" for="exampleCheck1">
+                  <label className="form-check-label" for="exampleCheck1">
                     Check me out
                   </label>
                 </div>
-                <div className='d-grid'>
-                <button type="submit" class={`btn ${styles.butLog}`}>
-                  Login
-                </button>
+                <div className="d-grid">
+                  <button type="submit" className={`btn ${styles.butLog}`}>
+                    Login
+                  </button>
                 </div>
-                </form>
-                <div className={styles.account}>
+              </form>
+              <div className={styles.account}>
                 Anda sudah punya akun? <span>Daftar disini</span>
-                </div>
+              </div>
             </div>
           </div>
         </div>

@@ -14,79 +14,99 @@ export default function Register() {
         <div className="container">
           <div className="row align-items-center">
             <div className={`col-6 ${styles.left}`}>
-                <div className={styles.overlay}></div>
-                <h1>Temukan developer berbakat & terbaik di berbagai bidang keahlian</h1>
+              <div className={styles.overlay}></div>
+              <h1>
+                Temukan developer berbakat & terbaik di berbagai bidang keahlian
+              </h1>
             </div>
             <div className={`col-5 offset-1 ${styles.right}`}>
-                <h2>Halo, Pewpeople</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In euismod ipsum et dui rhoncus auctor.</p>
-               <form>
-               <div class="mb-3">
-                  <label for="exampleInputName" class={`form-label ${styles.label}`}>
+              <h2>Halo, Pewpeople</h2>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. In
+                euismod ipsum et dui rhoncus auctor.
+              </p>
+              <form>
+                <div className="mb-3">
+                  <label
+                    for="exampleInputName"
+                    className={`form-label ${styles.label}`}
+                  >
                     Name
                   </label>
                   <input
                     type="text"
-                    class={`form-control ${styles.but}`}
+                    className={`form-control ${styles.but}`}
                     id="exampleInputName"
                     placeholder="Masukan Nama Anda"
                   />
                 </div>
-                <div class="mb-3">
-                  <label for="exampleInputEmail1" class={`form-label ${styles.label}`}>
+                <div className="mb-3">
+                  <label
+                    for="exampleInputEmail1"
+                    className={`form-label ${styles.label}`}
+                  >
                     Email address
                   </label>
                   <input
                     type="email"
-                    class={`form-control ${styles.but}`}
+                    className={`form-control ${styles.but}`}
                     id="exampleInputEmail1"
                     aria-describedby="emailHelp"
                     placeholder="Masukan Email Anda"
                   />
-                  <div id="emailHelp" class="form-text"></div>
+                  <div id="emailHelp" className="form-text"></div>
                 </div>
-                <div class="mb-3">
-                  <label for="exampleInputNoHandphone" class={`form-label ${styles.label}`}>
+                <div className="mb-3">
+                  <label
+                    for="exampleInputNoHandphone"
+                    className={`form-label ${styles.label}`}
+                  >
                     No. Handphone
                   </label>
                   <input
                     type="number"
-                    class={`form-control ${styles.but}`}
+                    className={`form-control ${styles.but}`}
                     id="exampleInputNoHandphone"
                     placeholder="Masukan No. Handphone Anda"
                   />
                 </div>
-                <div class="mb-3">
-                  <label for="exampleInputPassword1" class={`form-label ${styles.label}`}>
+                <div className="mb-3">
+                  <label
+                    for="exampleInputPassword1"
+                    className={`form-label ${styles.label}`}
+                  >
                     Password
                   </label>
                   <input
                     type="password"
-                    class={`form-control ${styles.but}`}
+                    className={`form-control ${styles.but}`}
                     id="exampleInputPassword1"
                     placeholder="Masukan Password Anda"
                   />
                 </div>
-                <div class="mb-3">
-                  <label for="exampleInputPassword1" class={`form-label ${styles.label}`}>
+                <div className="mb-3">
+                  <label
+                    for="exampleInputPassword1"
+                    className={`form-label ${styles.label}`}
+                  >
                     Konfirmasi Password
                   </label>
                   <input
                     type="password"
-                    class={`form-control ${styles.but}`}
+                    className={`form-control ${styles.but}`}
                     id="exampleInputPassword1"
                     placeholder="Masukan Konfirmasi Password Anda"
                   />
-                </div>                
-                <div className='d-grid'>
-                <button type="submit" class={`btn ${styles.butLog}`}>
-                  Daftar
-                </button>
                 </div>
-                </form>
-                <div className={styles.account}>
+                <div className="d-grid">
+                  <button type="submit" className={`btn ${styles.butLog}`}>
+                    Daftar
+                  </button>
+                </div>
+              </form>
+              <div className={styles.account}>
                 Anda sudah punya akun? <span>Masuk disini</span>
-                </div>
+              </div>
             </div>
           </div>
         </div>
