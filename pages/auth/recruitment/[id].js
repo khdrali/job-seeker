@@ -17,7 +17,7 @@ import { useRouter } from "next/router";
 import axios from "axios";
 import React from "react";
 
-export default function profileRecruitment(props) {
+export default function ProfileRecruitment(props) {
   const [profile, setProfile] = React.useState(props.jobList.data[0]);
   return (
     <>
