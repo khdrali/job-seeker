@@ -11,18 +11,18 @@ export default function Navbar() {
         <div className="container">
           <div className={`row justify-content-between ${style.navPad}`}>
             <div className="col-3">
-              <img src={Image.src} width="100px" />
+              <image src={Image.src} width="100px" />
             </div>
             <div className="col-3">
               <div className="row row-cols-auto">
                 <div className="col">
-                  <img src={Bell.src} width="30px" />
+                  <image src={Bell.src} width="30px" />
                 </div>
                 <div className="col">
-                  <img src={Mail.src} width="30px"></img>
+                  <image src={Mail.src} width="30px" />
                 </div>
                 <div className="col">
-                  <img src={Profile.src} width="30px"></img>
+                  <image src={Profile.src} width="30px" />
                 </div>
               </div>
             </div>

@@ -68,10 +68,10 @@ export default function Home(props) {
       <Navbar />
       <main className={styles.main}>
         <div className="container">
-          <div class={`input-group mb-3 ${styles.inputHead}`}>
+          <div className={`input-group mb-3 ${styles.inputHead}`}>
             <input
               type="text"
-              class={`form-control ${styles.input}`}
+              className={`form-control ${styles.input}`}
               placeholder="Search For Any Skill"
               aria-label="Example text with button addon"
               aria-describedby="button-addon1"
@@ -89,7 +89,7 @@ export default function Home(props) {
               <option value="ASC">Sort By Last</option>
             </select>
             <button
-              class={`btn ${styles.search}`}
+              className={`btn ${styles.search}`}
               type="button"
               id="button-addon1"
               onClick={() => {
@@ -115,9 +115,9 @@ export default function Home(props) {
             ))} */}
           <ListJob listData={props} />
           <nav aria-label="Page navigation example">
-            <ul class="pagination justify-content-center">
+            <ul className="pagination justify-content-center">
               <li
-                class={`page-item ${styles.pagination}`}
+                className={`page-item ${styles.pagination}`}
                 onClick={() => {
                   if (page > 1) {
                     getDataByPage(page - 1);
@@ -126,7 +126,7 @@ export default function Home(props) {
                 }}
               >
                 <a
-                  class={`page-link ${styles.paginationText}`}
+                  className={`page-link ${styles.paginationText}`}
                   href="#"
                   aria-label="Previous"
                 >
@@ -137,7 +137,7 @@ export default function Home(props) {
                 let currentPage = ++key;
                 return (
                   <li
-                    class={`page-item ${styles.pagination} ${
+                    className={`page-item ${styles.pagination} ${
                       page === currentPage ? "active" : ""
                     }`}
                     key={currentPage}
@@ -146,14 +146,17 @@ export default function Home(props) {
                       setPage(currentPage);
                     }}
                   >
-                    <a class={`page-link ${styles.paginationText}`} href="#">
+                    <a
+                      className={`page-link ${styles.paginationText}`}
+                      href="#"
+                    >
                       {currentPage}
                     </a>
                   </li>
                 );
               })}
               <li
-                class={`page-item ${styles.pagination}`}
+                className={`page-item ${styles.pagination}`}
                 onClick={() => {
                   if (page < total) {
                     getDataByPage(page + 1);
@@ -162,7 +165,7 @@ export default function Home(props) {
                 }}
               >
                 <a
-                  class={`page-link ${styles.paginationText}`}
+                  className={`page-link ${styles.paginationText}`}
                   href="#"
                   aria-label="Next"
                 >

@@ -34,7 +34,7 @@ export default function ProfileRecruitment(props) {
             <div className="row">
               <div className="col-4">
                 <div className={`border ${styles.borderLeft}`}>
-                  <img src={profile.user.photo_profile} />
+                  <image src={profile.user.photo_profile} alt="Photo Profile" />
                   <h2>{profile.user.fullname}</h2>
                   <p className={styles.role}>{profile.job}</p>
                   <p className={styles.job}>Freelancer</p>
@@ -57,7 +57,7 @@ export default function ProfileRecruitment(props) {
                   <div className={`container text-center ${styles.contact}`}>
                     <div className="row row-cols-auto">
                       <div className={`col ${styles.icon}`}>
-                        <img src={Mail.src} />
+                        <image src={Mail.src} alt="mail" />
                       </div>
                       <div className={`col ${styles.account}`}>
                         Louistommo@gmail.com
@@ -65,19 +65,19 @@ export default function ProfileRecruitment(props) {
                     </div>
                     <div className="row row-cols-auto">
                       <div className={`col ${styles.icon}`}>
-                        <img src={Instagram.src} />
+                        <image src={Instagram.src} alt="instagram" />
                       </div>
                       <div className={`col ${styles.account}`}>@Louist91</div>
                     </div>
                     <div className="row row-cols-auto">
                       <div className={`col ${styles.icon}`}>
-                        <img src={Github.src} />
+                        <image src={Github.src} alt="GIthub" />
                       </div>
                       <div className={`col ${styles.account}`}>@Louistommo</div>
                     </div>
                     <div className="row row-cols-auto">
                       <div className={`col ${styles.icon}`}>
-                        <img src={Gitlab.src} />
+                        <image src={Gitlab.src} alt="Gitlab" />
                       </div>
                       <div className={`col ${styles.account}`}>
                         @Louistommo91
@@ -107,29 +107,29 @@ export default function ProfileRecruitment(props) {
                   <div className="container text-center">
                     <div className="row">
                       <div className={`col-3 ${styles.porto}`}>
-                        <img src={Porto1.src} />
+                        <image src={Porto1.src} alt="porto1" />
                         <p>Reminder App</p>
                       </div>
                       <div className={`col-3 ${styles.porto}`}>
-                        <img src={Porto2.src} />
+                        <image src={Porto2.src} alt="porto2" />
                         <p>Social Media App</p>
                       </div>
                       <div className={`col-3 ${styles.porto}`}>
-                        <img src={Porto3.src} />
+                        <image src={Porto3.src} alt="porto3" />
                         <p>Project Management Web</p>
                       </div>
                     </div>
                     <div className="row">
                       <div className={`col-3 ${styles.porto}`}>
-                        <img src={Porto4.src} />
+                        <image src={Porto4.src} alt="porto4" />
                         <p>Reminder App</p>
                       </div>
                       <div className={`col-3 ${styles.porto}`}>
-                        <img src={Porto5.src} />
+                        <image src={Porto5.src} alt="porto5" />
                         <p>Social Media App</p>
                       </div>
                       <div className={`col-3 ${styles.porto}`}>
-                        <img src={Porto6.src} />
+                        <image src={Porto6.src} alt="porto6" />
                         <p>Project Management Web</p>
                       </div>
                     </div>
