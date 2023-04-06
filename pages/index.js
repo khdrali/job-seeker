@@ -82,11 +82,11 @@ export default function Home(props) {
                 setOrder(e.target.value);
               }}
             >
-              <option value="sort" selected disabled>
+              <option defaultValue="sort" selected disabled>
                 Sort
               </option>
-              <option value="DESC">Sort By Newst</option>
-              <option value="ASC">Sort By Last</option>
+              <option defaultValue="DESC">Sort By Newst</option>
+              <option defaultValue="ASC">Sort By Last</option>
             </select>
             <button
               className={`btn ${styles.search}`}
@@ -99,20 +99,6 @@ export default function Home(props) {
               Search
             </button>
           </div>
-          {/* {rows?.map((item, key) => (
-              <React.Fragment key={key}>
-                <ListJob
-                  item={{
-                    image: item?.["user.photo_profile"],
-                    name: item?.["user.fullname"],
-                    job: item?.job,
-                    location: item?.domicile,
-                    skills: item?.skills,
-                  }}
-                />
-                <hr />
-              </React.Fragment>
-            ))} */}
           <ListJob listData={props} />
           <nav aria-label="Page navigation example">
             <ul className="pagination justify-content-center">
